@@ -83,14 +83,14 @@ const PilarSelector = ({ pilarKey, data, active, onSelect }) => {
         transition: 'all 0.3s ease',
         cursor: 'pointer',
         gap: '0.75rem',
-        flex: 1,
-        minWidth: '220px',
+        flex: '1 1 200px',
+        maxWidth: '100%',
       }}
     >
-      <Icon size={48} style={{ opacity: active ? 1 : 0.7 }} />
+      <Icon size={40} style={{ opacity: active ? 1 : 0.7 }} />
       <div style={{ textAlign: 'center' }}>
-        <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 600 }}>{pilarKey}</h3>
-        <p style={{ margin: '0.25rem 0 0', fontSize: '0.9rem', color: active ? data.color : colors.mutedText }}>Pilar clave de la Seguridad</p>
+        <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 600 }}>{pilarKey}</h3>
+        <p style={{ margin: '0.25rem 0 0', fontSize: '0.85rem', color: active ? data.color : colors.mutedText }}>Pilar clave de la Seguridad</p>
       </div>
     </button>
   );
@@ -114,7 +114,7 @@ const TriangleDiagram = ({ activePilar }) => {
   ];
 
   return (
-    <svg width="240" height="240" viewBox="0 0 100 100">
+    <svg width="200" height="200" viewBox="0 0 100 100" style={{ maxWidth: '100%', height: 'auto' }}>
       {lines.map((line, index) => (
         <line
           key={index}
@@ -159,31 +159,31 @@ const PilarDetails = ({ pilar, data }) => {
   const Icon = data.icon;
   return (
     <div style={{
-      padding: '2rem',
+      padding: '1.5rem',
       backgroundColor: colors.card,
       borderRadius: '16px',
       border: `1px solid ${colors.border}`,
       boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.4)',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', borderBottom: `2px solid ${data.color}`, paddingBottom: '1rem' }}>
-        <Icon size={40} color={data.color} />
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', borderBottom: `2px solid ${data.color}`, paddingBottom: '1rem', flexWrap: 'wrap' }}>
+        <Icon size={36} color={data.color} />
         <div>
-          <h2 style={{ margin: 0, fontSize: '2rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>{pilar}</h2>
-          <p style={{ margin: '0.25rem 0 0', color: colors.mutedText, fontSize: '1rem' }}>Pilar clave de la Ciberseguridad</p>
+          <h2 style={{ margin: 0, fontSize: '1.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>{pilar}</h2>
+          <p style={{ margin: '0.25rem 0 0', color: colors.mutedText, fontSize: '0.95rem' }}>Pilar clave de la Ciberseguridad</p>
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
         <div>
-          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.colorSecondary}`, paddingBottom: '0.5rem', marginBottom: '1rem' }}>
-            <ShieldCheck style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} /> Mecanismos de Protección Clave
+          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.colorSecondary}`, paddingBottom: '0.5rem', marginBottom: '1rem', fontSize: '1rem' }}>
+            <ShieldCheck style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} size={18} /> Mecanismos de Protección Clave
           </h4>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {data.key_controls.map((item, idx) => {
               const ItemIcon = item.icon;
               return (
-                <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', color: colors.text }}>
-                  <ItemIcon size={18} style={{ color: colors.mutedText }} /> {item.name}
+                <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', color: colors.text, fontSize: '0.95rem' }}>
+                  <ItemIcon size={18} style={{ color: colors.mutedText, flexShrink: 0 }} /> {item.name}
                 </li>
               );
             })}
@@ -191,22 +191,22 @@ const PilarDetails = ({ pilar, data }) => {
         </div>
 
         <div>
-          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.colorSecondary}`, paddingBottom: '0.5rem', marginBottom: '1rem' }}>
-            <ShieldAlert style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} /> Principales Amenazas
+          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.colorSecondary}`, paddingBottom: '0.5rem', marginBottom: '1rem', fontSize: '1rem' }}>
+            <ShieldAlert style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} size={18} /> Principales Amenazas
           </h4>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {data.amenazas.map((threat, idx) => (
-              <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', color: colors.text }}>
-                <WifiOff size={18} style={{ color: colors.mutedText }} /> {threat}
+              <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', color: colors.text, fontSize: '0.95rem' }}>
+                <WifiOff size={18} style={{ color: colors.mutedText, flexShrink: 0 }} /> {threat}
               </li>
             ))}
           </ul>
         </div>
       </div>
 
-      <div style={{ marginTop: '2.5rem', borderTop: `1px solid ${colors.border}`, paddingTop: '1.5rem' }}>
-        <h4 style={{ color: data.color }}> <BotMessageSquare style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} /> Caso Práctico</h4>
-        <div style={{ padding: '1rem', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', fontStyle: 'italic', color: colors.mutedText }}>
+      <div style={{ marginTop: '2rem', borderTop: `1px solid ${colors.border}`, paddingTop: '1.25rem' }}>
+        <h4 style={{ color: data.color, marginTop: 0, fontSize: '1rem' }}> <BotMessageSquare style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} size={18} /> Caso Práctico</h4>
+        <div style={{ padding: '1rem', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', fontStyle: 'italic', color: colors.mutedText, fontSize: '0.95rem', lineHeight: '1.5' }}>
           {data.caso}
         </div>
       </div>
@@ -226,8 +226,60 @@ const App = () => {
       display: 'flex',
       flexDirection: 'column',
     }}>
+      <style>{`
+        .app-main {
+          display: flex;
+          flex-direction: row;
+          gap: 2.5rem;
+          padding: 2rem;
+          max-width: 1400px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .app-aside {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+          width: 300px;
+          flex-shrink: 0;
+        }
+
+        .pilar-selector-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          width: 100%;
+        }
+
+        @media (max-width: 900px) {
+          .app-main {
+            flex-direction: column;
+            padding: 1.25rem;
+            gap: 2rem;
+          }
+
+          .app-aside {
+            width: 100%;
+          }
+
+          .pilar-selector-container {
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .pilar-selector-container {
+            flex-direction: column;
+          }
+        }
+      `}</style>
+
       <header style={{
-        padding: '1.5rem',
+        padding: '1rem 1.5rem',
         borderBottom: `1px solid ${colors.border}`,
         display: 'flex',
         justifyContent: 'space-between',
@@ -238,28 +290,23 @@ const App = () => {
         zIndex: 50,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <ShieldCheck size={28} color={colors.pilarC} />
-          <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 700 }}>Seguridad Miércoles <span style={{ color: colors.mutedText, fontSize: '0.875rem', fontWeight: 300 }}>v1.1</span></h1>
+          <ShieldCheck size={26} color={colors.pilarC} />
+          <h1 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+            Seguridad Miércoles <span style={{ color: colors.mutedText, fontSize: '0.8rem', fontWeight: 300 }}>v1.1</span>
+          </h1>
         </div>
       </header>
 
-      <main style={{
-        flex: 1,
-        padding: '3rem',
-        display: 'flex',
-        gap: '3rem',
-        maxWidth: '1600px',
-        margin: '0 auto',
-        width: '100%',
-        boxSizing: 'border-box'
-      }}>
-        <aside style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem', width: '300px' }}>
-          <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <main className="app-main">
+        <aside className="app-aside">
+          <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
             <TriangleDiagram activePilar={activePilar} />
-            <p style={{ textAlign: 'center', fontSize: '0.9rem', color: colors.mutedText, marginTop: '1rem' }}>Diagrama Interactivo. Haz clic en un pilar para ver detalles.</p>
+            <p style={{ textAlign: 'center', fontSize: '0.85rem', color: colors.mutedText, marginTop: '0.75rem', margin: '0.75rem 0 0 0' }}>
+              Diagrama Interactivo. Haz clic en un pilar para ver detalles.
+            </p>
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', width: '100%' }}>
+          <div className="pilar-selector-container">
             {Object.keys(pilarData).map((pilarKey) => (
               <PilarSelector
                 key={pilarKey}
@@ -272,16 +319,16 @@ const App = () => {
           </div>
         </aside>
 
-        <section style={{ flex: 1 }}>
-          <div style={{ marginBottom: '2rem' }}>
+        <section style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ marginBottom: '1.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <ShieldCheck size={20} color={colors.pilarC} />
-              <p style={{ color: colors.mutedText, margin: 0 }}>Modelo C.I.A. Fundamental</p>
+              <ShieldCheck size={18} color={colors.pilarC} />
+              <p style={{ color: colors.mutedText, margin: 0, fontSize: '0.9rem' }}>Modelo C.I.A. Fundamental</p>
             </div>
-            <h1 style={{ margin: '0.5rem 0 1rem 0', fontSize: '2.25rem', fontWeight: 800, lineHeight: 1.2 }}>
+            <h1 style={{ margin: '0.5rem 0', fontSize: 'clamp(1.5rem, 4vw, 2.25rem)', fontWeight: 800, lineHeight: 1.2 }}>
               La Triada de la <span style={{ textDecoration: 'underline' }}>Información</span>
             </h1>
-            <p style={{ color: colors.text, fontSize: '1.1rem', maxWidth: '800px', lineHeight: '1.6' }}>
+            <p style={{ color: colors.text, fontSize: '1rem', maxWidth: '800px', lineHeight: '1.5', margin: 0 }}>
               Marco de trabajo de seguridad para guiar las políticas de seguridad de la información. Un sistema debe equilibrar y garantizar estos principios.
             </p>
           </div>
@@ -291,14 +338,14 @@ const App = () => {
       </main>
 
       <footer style={{
-        padding: '2rem',
+        padding: '1.5rem',
         borderTop: `1px solid ${colors.border}`,
-        marginTop: '3rem',
+        marginTop: 'auto',
         textAlign: 'center',
         color: colors.mutedText,
-        fontSize: '0.9rem',
+        fontSize: '0.85rem',
       }}>
-        &copy; {new Date().getFullYear()} Proyecto Seguridad Miercoles. Material Educativo de Ciberseguridad
+        &copy; {new Date().getFullYear()} Proyecto Seguridad Miércoles. Material Educativo de Ciberseguridad
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
           <Code size={16} /> <a href="#" style={{ color: colors.mutedText, textDecoration: 'none' }}>React + Vite</a> + <a href="#" style={{ color: colors.mutedText, textDecoration: 'none' }}>Lucide Icons</a>
         </div>
