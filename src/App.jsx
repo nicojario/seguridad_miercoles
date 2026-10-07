@@ -192,7 +192,7 @@ const PilarDetails = ({ pilar, data }) => {
               const ItemIcon = item.icon;
               return (
                 <li key={idx} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem', color: colors.text }}>
-                  <ItemIcon size={18} style={{ color: colors.mutedText }} /> {item.name}
+                  <h4 style={{ color: data.color, borderBottom: `1px solid ${data.colorSecondary}`, paddingBottom: '0.5rem', marginBottom: '1rem' }}> {item.name}
                 </li>
               );
             })}
