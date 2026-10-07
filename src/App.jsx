@@ -177,8 +177,8 @@ const PilarDetails = ({ pilar, data }) => {
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', borderBottom: `2px solid ${data.color}`, paddingBottom: '1rem' }}>
         <Icon size={40} color={data.color} />
         <div>
-          <h2 style={{ margin: 0, fontSize: '2.5rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>{pilar}</h2>
-          <p style={{ margin: '0.25rem 0 0', color: colors.mutedText, fontSize: '1.1rem' }}>Pilar clave de la Ciberseguridad</p>
+          <h2 style={{ margin: 0, fontSize: '2rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px' }}>{pilar}</h2>
+          <p style={{ margin: '0.25rem 0 0', color: colors.mutedText, fontSize: '1rem' }}>Pilar clave de la Ciberseguridad</p>
         </div>
       </div>
 
@@ -249,7 +249,7 @@ const App = () => {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <ShieldCheck size={28} color={colors.pilarC} />
-          <h1 style={{ margin: 0, fontSize: '1.75rem', fontWeight: 700 }}>Seguridad Miércoles <span style={{ color: colors.mutedText, fontSize: '1rem', fontWeight: 300 }}>v1.1</span></h1>
+          <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 700 }}>Seguridad Miércoles <span style={{ color: colors.mutedText, fontSize: '0.875rem', fontWeight: 300 }}>v1.1</span></h1>
         </div>
         
         <nav style={{ display: 'flex', gap: '0.5rem' }}>
@@ -316,8 +316,12 @@ const App = () => {
               <ShieldCheck size={20} color={colors.pilarC} />
               <p style={{ color: colors.mutedText, margin: 0 }}>Modelo C.I.A. Fundamental</p>
             </div>
-            <h1 style={{ margin: '0.5rem 0', fontSize: '3.5rem', fontWeight: 800 }}>La Triada de la <span style={{ textDecoration: 'underline' }}>Información</span></h1>
-            <p style={{ color: colors.text, fontSize: '1.2rem', maxWidth: '800px', lineHeight: '1.7' }}>Marco de trabajo de seguridad para guiar las políticas de seguridad de la información. Un sistema debe equilibrar y garantizar estos principios.</p>
+            <h1 style={{ margin: '0.5rem 0 1rem 0', fontSize: '2.25rem', fontWeight: 800, lineHeight: 1.2 }}>
+              La Triada de la <span style={{ textDecoration: 'underline' }}>Información</span>
+            </h1>
+            <p style={{ color: colors.text, fontSize: '1.1rem', maxWidth: '800px', lineHeight: '1.6' }}>
+              Marco de trabajo de seguridad para guiar las políticas de seguridad de la información. Un sistema debe equilibrar y garantizar estos principios.
+            </p>
           </div>
 
           <PilarDetails pilar={activePilar} data={pilarData[activePilar]} />
