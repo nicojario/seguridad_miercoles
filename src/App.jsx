@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   BookOpenCheck, ShieldAlert, BrainCircuit, BotMessageSquare, ShieldCheck, Lock, 
-  KeySquare, UserCheck, FileHash, Zap, DatabaseZap, Clock, WifiOff, Github 
+  KeySquare, UserCheck, FileCode, Zap, DatabaseZap, Clock, WifiOff, Code 
 } from 'lucide-react';
 
 const colors = {
@@ -44,9 +44,9 @@ const pilarData = {
   Integridad: {
     color: colors.pilarI,
     colorSecondary: 'rgba(187, 134, 252, 0.1)',
-    icon: FileHash,
+    icon: FileCode,
     key_controls: [
-      { name: 'Suma de Comprobación (Hashing)', icon: FileHash },
+      { name: 'Suma de Comprobación (Hashing)', icon: FileCode },
       { name: 'Firma Digital', icon: Zap },
       { name: 'Control de Versiones y Auditoría', icon: ShieldCheck },
     ],
@@ -334,7 +334,7 @@ const App = () => {
       }}>
         &copy; {new Date().getFullYear()} Proyecto Seguridad Miercoles. Material Educativo de Ciberseguridad
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
-          <Github size={16} /> <a href="#" style={{ color: colors.mutedText, textDecoration: 'none' }}>React + Vite</a> + <a href="#" style={{ color: colors.mutedText, textDecoration: 'none' }}>Lucide Icons</a>
+          <Code size={16} /> <a href="#" style={{ color: colors.mutedText, textDecoration: 'none' }}>React + Vite</a> + <a href="#" style={{ color: colors.mutedText, textDecoration: 'none' }}>Lucide Icons</a>
         </div>
       </footer>
     </div>
