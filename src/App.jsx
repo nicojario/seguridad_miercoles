@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { 
   BookOpenCheck, ShieldAlert, BrainCircuit, BotMessageSquare, ShieldCheck, Lock, 
-  Target, Zap, UserCheck, KeySquare, FileHash, DatabaseZap, Clock, WifiOff, Github 
+  KeySquare, UserCheck, FileHash, Zap, DatabaseZap, Clock, WifiOff, Github 
 } from 'lucide-react';
 
-// Estilos centrales para unificación (puedes pasarlo a CSSModules o Tailwind)
 const colors = {
-  bg: '#111827', // deep slate gray
+  bg: '#111827',
   text: '#f3f4f6',
   mutedText: '#9ca3af',
-  pilarC: '#00b0ff', // Vivid cyan for Confidentiality
-  pilarI: '#bb86fc', // Modern purple for Integrity
-  pilarA: '#4cd964', // Emerald green for Availability
-  card: '#1f2937', // slightly lighter background
+  pilarC: '#00b0ff',
+  pilarI: '#bb86fc',
+  pilarA: '#4cd964',
+  card: '#1f2937',
   navBtnBg: '#111827',
   navBtnText: '#d1d5db',
   border: '#374151',
@@ -107,10 +106,9 @@ const PilarSelector = ({ pilarKey, data, active, onSelect }) => {
 };
 
 const TriangleDiagram = ({ activePilar }) => {
-  const radius = 100;
-  const pilarC_coords = { x: 50, y: 15 }; // Top
-  const pilarI_coords = { x: 15, y: 85 }; // Left
-  const pilarA_coords = { x: 85, y: 85 }; // Right
+  const pilarC_coords = { x: 50, y: 15 };
+  const pilarI_coords = { x: 15, y: 85 };
+  const pilarA_coords = { x: 85, y: 85 };
 
   const lines = [
     { from: pilarC_coords, to: pilarI_coords },
@@ -126,7 +124,6 @@ const TriangleDiagram = ({ activePilar }) => {
 
   return (
     <svg width="240" height="240" viewBox="0 0 100 100">
-      {/* Lines with subtle background and colored if connected */}
       {lines.map((line, index) => (
         <line
           key={index}
@@ -137,12 +134,10 @@ const TriangleDiagram = ({ activePilar }) => {
           strokeDasharray="1 2"
         />
       ))}
-      {/* Nodes: Professional circles with icon/label */}
       {nodes.map((node) => {
         const isActive = activePilar === node.pilar;
         return (
           <g key={node.pilar} transform={`translate(${node.x}, ${node.y})`}>
-            {/* The active glow/ring */}
             <circle
               r="7"
               fill={colors.card}
@@ -150,7 +145,6 @@ const TriangleDiagram = ({ activePilar }) => {
               strokeWidth={isActive ? '1.5' : '1'}
               style={{ transition: 'all 0.3s ease' }}
             />
-            {/* Label text */}
             <text
               x="0"
               y="0"
@@ -163,7 +157,6 @@ const TriangleDiagram = ({ activePilar }) => {
             >
               {node.label}
             </text>
-            {/* Small identifier icon/glyph? */}
           </g>
         );
       })}
@@ -190,9 +183,8 @@ const PilarDetails = ({ pilar, data }) => {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-        {/* Controls */}
         <div>
-          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.color Secondary}`, paddingBottom: '0.5rem', marginBottom: '1rem' }}>
+          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.colorSecondary}`, paddingBottom: '0.5rem', marginBottom: '1rem' }}>
             <ShieldCheck style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} /> Mecanismos de Protección Clave
           </h4>
           <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -207,9 +199,8 @@ const PilarDetails = ({ pilar, data }) => {
           </ul>
         </div>
 
-        {/* Threats */}
         <div>
-          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.color Secondary}`, paddingBottom: '0.5rem', marginBottom: '1rem' }}>
+          <h4 style={{ color: data.color, borderBottom: `1px solid ${data.colorSecondary}`, paddingBottom: '0.5rem', marginBottom: '1rem' }}>
             <ShieldAlert style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} /> Principales Amenazas
           </h4>
           <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -222,7 +213,6 @@ const PilarDetails = ({ pilar, data }) => {
         </div>
       </div>
 
-      {/* Case */}
       <div style={{ marginTop: '2.5rem', borderTop: `1px solid ${colors.border}`, paddingTop: '1.5rem' }}>
         <h4 style={{ color: data.color }}> <BotMessageSquare style={{ verticalAlign: 'middle', marginRight: '0.5rem' }} /> Caso Práctico</h4>
         <div style={{ padding: '1rem', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', fontStyle: 'italic', color: colors.mutedText }}>
@@ -246,7 +236,6 @@ const App = () => {
       display: 'flex',
       flexDirection: 'column',
     }}>
-      {/* Professional Header */}
       <header style={{
         padding: '1.5rem',
         borderBottom: `1px solid ${colors.border}`,
@@ -263,7 +252,6 @@ const App = () => {
           <h1 style={{ margin: 0, fontSize: '1.75rem', fontWeight: 700 }}>Seguridad Miércoles <span style={{ color: colors.mutedText, fontSize: '1rem', fontWeight: 300 }}>v1.1</span></h1>
         </div>
         
-        {/* Navigation Tabs (Professional Buttons) */}
         <nav style={{ display: 'flex', gap: '0.5rem' }}>
           {navigationTabs.map((tab, idx) => {
             const Icon = tab.icon;
@@ -293,7 +281,6 @@ const App = () => {
         </nav>
       </header>
 
-      {/* Main Content: Organized in a 2-column layout (Left: Selector, Right: Details) */}
       <main style={{
         flex: 1,
         padding: '3rem',
@@ -304,8 +291,6 @@ const App = () => {
         width: '100%',
         boxSizing: 'border-box'
       }}>
-        
-        {/* Left Column: Triangle & Main Navigation */}
         <aside style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem', width: '300px' }}>
           <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <TriangleDiagram activePilar={activePilar} />
@@ -325,9 +310,7 @@ const App = () => {
           </div>
         </aside>
 
-        {/* Right Column: Pilar Detail Content */}
         <section style={{ flex: 1 }}>
-          {/* Active Pilar Title Area */}
           <div style={{ marginBottom: '2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <ShieldCheck size={20} color={colors.pilarC} />
@@ -337,12 +320,10 @@ const App = () => {
             <p style={{ color: colors.text, fontSize: '1.2rem', maxWidth: '800px', lineHeight: '1.7' }}>Marco de trabajo de seguridad para guiar las políticas de seguridad de la información. Un sistema debe equilibrar y garantizar estos principios.</p>
           </div>
 
-          {/* Details Card */}
           <PilarDetails pilar={activePilar} data={pilarData[activePilar]} />
         </section>
       </main>
 
-      {/* Clean Footer */}
       <footer style={{
         padding: '2rem',
         borderTop: `1px solid ${colors.border}`,
