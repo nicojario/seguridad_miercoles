@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  BookOpenCheck, ShieldAlert, BrainCircuit, BotMessageSquare, ShieldCheck, Lock, 
-  KeySquare, UserCheck, FileCode, Zap, DatabaseZap, Clock, WifiOff, Code 
+  ShieldAlert, ShieldCheck, Lock, KeySquare, UserCheck, 
+  FileCode, Zap, DatabaseZap, Clock, WifiOff, BotMessageSquare, Code 
 } from 'lucide-react';
 
 const colors = {
@@ -12,17 +12,8 @@ const colors = {
   pilarI: '#bb86fc',
   pilarA: '#4cd964',
   card: '#1f2937',
-  navBtnBg: '#111827',
-  navBtnText: '#d1d5db',
   border: '#374151',
 };
-
-const navigationTabs = [
-  { name: 'Infografía CIA', icon: BookOpenCheck, color: colors.pilarC },
-  { name: 'Simulador de Incidentes', icon: ShieldAlert, color: colors.pilarI },
-  { name: 'Evaluación', icon: BrainCircuit, color: colors.pilarA },
-  { name: 'Matriz de Mecanismos', icon: BotMessageSquare, color: colors.text },
-];
 
 const pilarData = {
   Confidencialidad: {
@@ -224,7 +215,6 @@ const PilarDetails = ({ pilar, data }) => {
 };
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState(0);
   const [activePilar, setActivePilar] = useState('Confidencialidad');
 
   return (
@@ -251,34 +241,6 @@ const App = () => {
           <ShieldCheck size={28} color={colors.pilarC} />
           <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 700 }}>Seguridad Miércoles <span style={{ color: colors.mutedText, fontSize: '0.875rem', fontWeight: 300 }}>v1.1</span></h1>
         </div>
-        
-        <nav style={{ display: 'flex', gap: '0.5rem' }}>
-          {navigationTabs.map((tab, idx) => {
-            const Icon = tab.icon;
-            const isActive = idx === activeTab;
-            return (
-              <button
-                key={tab.name}
-                onClick={() => setActiveTab(idx)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.6rem 1rem',
-                  borderRadius: '6px',
-                  border: `1px solid ${colors.border}`,
-                  backgroundColor: isActive ? 'rgba(255, 255, 255, 0.08)' : colors.navBtnBg,
-                  color: isActive ? colors.text : colors.navBtnText,
-                  cursor: 'pointer',
-                  fontWeight: isActive ? 600 : 400,
-                  transition: 'all 0.2s',
-                }}
-              >
-                <Icon size={18} /> {tab.name}
-              </button>
-            );
-          })}
-        </nav>
       </header>
 
       <main style={{
